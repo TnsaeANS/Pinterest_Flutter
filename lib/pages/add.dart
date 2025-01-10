@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pinterest_flutter/constants/colors.dart';
 
 class AddScreen extends StatelessWidget {
   const AddScreen({super.key});
@@ -6,6 +7,7 @@ class AddScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: MainColor.primaryColor,
       appBar: AppBar(title: const Text('Add')),
       body: const Center(
         child: Text(

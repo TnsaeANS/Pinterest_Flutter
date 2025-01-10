@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:pinterest_flutter/constants/colors.dart';
 
 class HomePage extends StatelessWidget {
   final List<String> imagePaths = [
@@ -31,7 +32,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      backgroundColor: MainColor.primaryColor,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: MasonryGridView.builder(

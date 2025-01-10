@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pinterest_flutter/constants/colors.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -6,6 +7,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: MainColor.primaryColor,
       appBar: AppBar(title: const Text('Profile')),
       body: const Center(
         child: Text(
