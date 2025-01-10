@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pinterest_flutter/constants/colors.dart';
 import 'pages/nav.dart';
-import 'pages/home.dart'; 
-import 'pages/search.dart';  
+import 'pages/home.dart';
+import 'pages/search.dart';
 import 'pages/add.dart';
 import 'pages/profile.dart';
 import 'pages/chat.dart';
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(), // Start with SplashScreen
+      home: const SplashScreen(),
     );
   }
 }
@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
     _logoAnimation = Tween<Offset>(
       begin: Offset.zero,
-      end: const Offset(0, -19),
+      end: const Offset(0, -1.9),
     ).animate(
       CurvedAnimation(
         parent: _controller,
@@ -74,9 +74,9 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
         child: SlideTransition(
           position: _logoAnimation,
           child: Image.asset(
-            'assets/pinterest.png',  // Splash image
-            width: 100,
-            height: 100,
+            'assets/pinterest.png', // Splash image
+            width: 300,
+            height: 300,
           ),
         ),
       ),
@@ -92,19 +92,16 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedIndex = 0; // Keep track of the selected tab index
+  int _selectedIndex = 0;
 
-  // Pages to display
   final List<Widget> _pages = [
     HomePage(),
     SearchPage(),
     AddScreen(),
     ChatScreen(),
     ProfileScreen(),
-    // Add more pages as needed
   ];
 
-  // Function to handle item selection
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -112,31 +109,39 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   @override
-  @override
-Widget build(BuildContext context) {
-  return Scaffold(
-    backgroundColor: MainColor.primaryColor,
-    appBar: PreferredSize(
-      preferredSize: const Size.fromHeight(50), // Adjust height as needed
-      child: Container(
-        alignment: Alignment.center,
-        child: const Text(
-          "All",
-          style: TextStyle(
-            fontSize: 20, // Adjust font size
-            decoration: TextDecoration.underline, // Underline the text
-            decorationColor: Colors.white,
-            color: Color.fromARGB(255, 255, 252, 252), // Set text color
-          ),
-        ),
-      ),
-    ),
-    body: _pages[_selectedIndex], // Display the selected page
-    bottomNavigationBar: NavBar(
-      selectedIndex: _selectedIndex,
-      onItemTapped: _onItemTapped,
-    ),
-  );
-}
+  Widget build(BuildContext context) {
+    // Adjust AppBar height dynamically
+    double appBarHeight = 50; // Default height
+    if (_selectedIndex == 2) {
+      appBarHeight = 0; // Hide AppBar for Add page
+    }
 
+    return Scaffold(
+      backgroundColor: MainColor.primaryColor,
+      appBar: appBarHeight > 0
+          ? PreferredSize(
+              preferredSize: Size.fromHeight(appBarHeight),
+              child: AppBar(
+                centerTitle: true,
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                title: const Text(
+                  "All",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    decoration: TextDecoration.underline,
+                    decorationColor: Colors.white,
+                  ),
+                ),
+              ),
+            )
+          : null, // No AppBar if height is 0
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: NavBar(
+        selectedIndex: _selectedIndex,
+        onItemTapped: _onItemTapped,
+      ),
+    );
+  }
 }
