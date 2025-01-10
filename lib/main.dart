@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'pages/nav.dart';
 import 'pages/home.dart'; 
 import 'pages/search.dart';  
+import 'Pages/profile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(), // Start with SplashScreen
+      home: const SplashScreen(),
     );
   }
 }
@@ -65,14 +66,14 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color.fromARGB(255, 245, 245, 245),
       body: Center(
         child: SlideTransition(
           position: _logoAnimation,
           child: Image.asset(
             'assets/pinterest.png',  // Splash image
-            width: 100,
-            height: 100,
+            width: 300,
+            height: 300,
           ),
         ),
       ),
@@ -88,37 +89,47 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedIndex = 0; // Keep track of the selected tab index
+  int _selectedIndex = 0;
 
   // Pages to display
   final List<Widget> _pages = [
     HomePage(),
     SearchPage(),
+    ProfileScreen(),
     // Add more pages as needed
   ];
 
   // Function to handle item selection
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (index < _pages.length) { 
+      setState(() {
+        _selectedIndex = index; // Update the selected index
+      });
+    }
   }
 
   @override
-  @override
 Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: PreferredSize(
-      preferredSize: const Size.fromHeight(50), // Adjust height as needed
-      child: Container(
-        alignment: Alignment.center,
-        child: const Text(
-          "All",
-          style: TextStyle(
-            fontSize: 20, // Adjust font size
-            fontWeight: FontWeight.bold,
-            decoration: TextDecoration.underline, // Underline the text
-            color: Colors.black, // Set text color
+ double appBarHeight = 50;
+
+    if (_selectedIndex == 2) { // Profile page
+      appBarHeight = 0; // Hide the AppBar completely
+    } else if (_selectedIndex == 1) { // Search page
+      appBarHeight = 60; // Slightly taller for the search bar
+    }
+
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(appBarHeight),
+        child: Container(
+          alignment: Alignment.center,
+          child: (_selectedIndex == 1) ? null : const Text(
+            "All",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              decoration: TextDecoration.underline,
+              color: Colors.black,
           ),
         ),
       ),
