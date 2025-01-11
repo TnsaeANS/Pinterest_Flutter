@@ -18,7 +18,7 @@ class SearchPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'Search',
+                  hintText: 'Search for ideas',
                   prefixIcon: Icon(Icons.search),
                   suffixIcon: Icon(Icons.camera_alt),
 
@@ -33,7 +33,15 @@ class SearchPage extends StatelessWidget {
               ),
             ),
           ),
-        ],
+          const SizedBox(height: 25),
+          const Text(
+          "Ideas for you",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+                    ),
+                    )],
       ),
     );
   }
