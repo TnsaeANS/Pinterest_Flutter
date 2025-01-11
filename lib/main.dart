@@ -109,11 +109,14 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    // Adjust AppBar height dynamically
-    double appBarHeight = 50; // Default height
-    if (_selectedIndex == 2) {
-      appBarHeight = 0; // Hide AppBar for Add page
+Widget build(BuildContext context) {
+ double appBarHeight = 50;
+
+    if (_selectedIndex == 1) {
+      appBarHeight = 10; // Hide the AppBar completely
+    } else if (_selectedIndex == 0) { // Search page
+      appBarHeight = 60; // Slightly taller for the search bar
+
     }
 
     return Scaffold(
