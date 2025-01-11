@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pinterest_flutter/constants/colors.dart';
 import 'pages/nav.dart';
 import 'pages/home.dart'; 
 import 'pages/search.dart';  
+import 'pages/add.dart';
+import 'pages/profile.dart';
+import 'pages/chat.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
     _logoAnimation = Tween<Offset>(
       begin: Offset.zero,
-      end: const Offset(0, -10),
+      end: const Offset(0, -19),
     ).animate(
       CurvedAnimation(
         parent: _controller,
@@ -65,7 +69,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: MainColor.primaryColor,
       body: Center(
         child: SlideTransition(
           position: _logoAnimation,
@@ -94,6 +98,9 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _pages = [
     HomePage(),
     SearchPage(),
+    AddScreen(),
+    ChatScreen(),
+    ProfileScreen(),
     // Add more pages as needed
   ];
 
@@ -108,6 +115,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
 Widget build(BuildContext context) {
   return Scaffold(
+    backgroundColor: MainColor.primaryColor,
     appBar: PreferredSize(
       preferredSize: const Size.fromHeight(50), // Adjust height as needed
       child: Container(
@@ -116,9 +124,9 @@ Widget build(BuildContext context) {
           "All",
           style: TextStyle(
             fontSize: 20, // Adjust font size
-            fontWeight: FontWeight.bold,
             decoration: TextDecoration.underline, // Underline the text
-            color: Colors.black, // Set text color
+            decorationColor: Colors.white,
+            color: Color.fromARGB(255, 255, 252, 252), // Set text color
           ),
         ),
       ),

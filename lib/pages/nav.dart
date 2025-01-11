@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pinterest_flutter/constants/colors.dart';
 
 class NavBar extends StatelessWidget {
   final int selectedIndex;
@@ -13,9 +14,12 @@ class NavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: MainColor.primaryColor,
       type: BottomNavigationBarType.fixed,
       currentIndex: selectedIndex,
       onTap: onItemTapped,
+      selectedItemColor: MainColor.secondaryColor, // Use the red from MainColor
+      unselectedItemColor: MainColor.accentColor, // Use white from MainColor
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
