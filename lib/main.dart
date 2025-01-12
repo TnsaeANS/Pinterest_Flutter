@@ -40,12 +40,12 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 4),
+      duration: const Duration(seconds: 3),
     );
 
     _logoAnimation = Tween<Offset>(
       begin: Offset.zero,
-      end: const Offset(0, -1.9),
+      end: const Offset(0, -7),
     ).animate(
       CurvedAnimation(
         parent: _controller,
@@ -53,11 +53,15 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
       ),
     );
 
-    _controller.forward().then((value) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const MainScreen()), // Navigate to MainScreen after splash
-      );
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const MainScreen()),
+        );
+      }
     });
+
+    _controller.forward();
   }
 
   @override
@@ -145,3 +149,4 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
+ 
