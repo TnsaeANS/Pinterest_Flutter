@@ -15,6 +15,8 @@ class SearchPage extends StatelessWidget {
       'Funny Meme',
       'Pixel Art',
       'Flowers',
+      'Moon Ideas',
+      'Aesthetic',
     ];
 
     List<String> descriptionz = [
@@ -33,6 +35,8 @@ class SearchPage extends StatelessWidget {
       'assets/25.jpg',
       'assets/26.jpg',
       'assets/27.jpg',
+      'assets/35.jpeg',
+      'assets/36.jpeg',
     ];
 
     List<String> imagePathz = [
@@ -51,7 +55,7 @@ class SearchPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 50),
-            Container(
+            SizedBox(
               width: screenWidth,
               height: 50,
               child: Padding(

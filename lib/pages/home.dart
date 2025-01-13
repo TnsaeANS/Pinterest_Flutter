@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:pinterest_flutter/constants/colors.dart';
 
+
 class HomePage extends StatelessWidget {
   final List<String> imagePaths = [
     'assets/1.jpg',
+    'assets/37.jpg',
     'assets/2.jpg',
     'assets/3.jpg',
+    'assets/38.jpg',
     'assets/4.jpg',
     'assets/5.jpg',
+    'assets/39.jpg',
     'assets/6.jpg',
     'assets/7.jpg',
     'assets/8.jpg',
@@ -25,6 +29,7 @@ class HomePage extends StatelessWidget {
     'assets/19.jpg',
     'assets/20.jpg',
     'assets/21.jpg',
+    
   ];
 
   HomePage({super.key});
