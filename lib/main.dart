@@ -116,7 +116,7 @@ class _MainScreenState extends State<MainScreen> {
 Widget build(BuildContext context) {
  double appBarHeight = 50;
 
-    if (_selectedIndex == 1) {
+    if (_selectedIndex == 1 || _selectedIndex == 4) {
       appBarHeight = 0; // Hide the AppBar completely
     } else if (_selectedIndex == 0) { // Search page
       appBarHeight = 60; // Slightly taller for the search bar
@@ -126,24 +126,53 @@ Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MainColor.primaryColor,
       appBar: appBarHeight > 0
-          ? PreferredSize(
-              preferredSize: Size.fromHeight(appBarHeight),
-              child: AppBar(
-                centerTitle: true,
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-                title: const Text(
-                  "All",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                    decoration: TextDecoration.underline,
-                    decorationColor: Colors.white,
+    ? PreferredSize(
+        preferredSize: Size.fromHeight(appBarHeight),
+        child: AppBar(
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  const Text(
+                    "All",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 4), // Space between text and underline
+                  Container(
+                    width: 40, 
+                    height: 4,  
+                    decoration: BoxDecoration(
+                      color: Colors.white, 
+                      borderRadius: BorderRadius.circular(2), 
+                    ),
+                  ),
+                ],
               ),
-            )
-          : null, // No AppBar if height is 0
+              const SizedBox(width: 20), 
+              Column(
+                children: [
+                  const Text(
+                    "Board",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                ],
+              ),
+            ],
+          ),
+        ),
+      )
+    : null, // No AppBar if height is 0 // No AppBar if height is 0
       body: _pages[_selectedIndex],
       bottomNavigationBar: NavBar(
         selectedIndex: _selectedIndex,
