@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-
+import 'package:pinterest_flutter/constants/colors.dart';
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
 
@@ -15,6 +15,8 @@ class SearchPage extends StatelessWidget {
       'Funny Meme',
       'Pixel Art',
       'Flowers',
+      'Moon Ideas',
+      'Aesthetic',
     ];
 
     List<String> descriptionz = [
@@ -33,6 +35,8 @@ class SearchPage extends StatelessWidget {
       'assets/25.jpg',
       'assets/26.jpg',
       'assets/27.jpg',
+      'assets/35.jpeg',
+      'assets/36.jpeg',
     ];
 
     List<String> imagePathz = [
@@ -45,12 +49,13 @@ class SearchPage extends StatelessWidget {
     ];
 
     return Scaffold(
+      backgroundColor: MainColor.primaryColor,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 15),
-            Container(
+            const SizedBox(height: 50),
+            SizedBox(
               width: screenWidth,
               height: 50,
               child: Padding(
@@ -59,15 +64,15 @@ class SearchPage extends StatelessWidget {
                   
                   decoration: InputDecoration(
                     hintText: 'Search for ideas',
-                    prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
-                    suffixIcon: Icon(Icons.camera_alt, color: Colors.grey.shade400),
-                    hintStyle: TextStyle(fontSize: 15, color: Colors.grey.shade500),
+                    prefixIcon: Icon(Icons.search, color: const Color.fromARGB(234, 90, 90, 90)),
+                    suffixIcon: Icon(Icons.camera_alt, color: const Color.fromARGB(234, 90, 90, 90)),
+                    hintStyle: TextStyle(fontSize: 15, color: const Color.fromARGB(94, 228, 228, 228)),
                     border: OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.circular(40),
                     ),
                     filled: true,
-                    fillColor: const Color.fromARGB(117, 223, 223, 223),
+                    fillColor: const Color.fromARGB(28, 218, 218, 218),
                   ),
                 ),
               ),
@@ -81,10 +86,10 @@ class SearchPage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 21,
                   fontWeight: FontWeight.w500,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
               ),
-            ),
+              ),
             MasonryGridView.builder(
               gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               itemCount: imagePaths.length,
@@ -140,7 +145,7 @@ class SearchPage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 21,
                   fontWeight: FontWeight.w500,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
               ),
             ),

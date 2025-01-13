@@ -20,7 +20,7 @@ class NavBar extends StatelessWidget {
       onTap: onItemTapped,
       selectedItemColor: MainColor.secondaryColor, // Use the red from MainColor
       unselectedItemColor: MainColor.accentColor, // Use white from MainColor
-      items: const [
+      items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: '',
@@ -38,9 +38,15 @@ class NavBar extends StatelessWidget {
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: '',
-        ),
+  icon: CircleAvatar(
+    backgroundImage: AssetImage(
+      'assets/profile.png',
+    ),
+    radius: 15, // Adjust this value to control the size of the CircleAvatar
+  ),
+  label: '',
+)
+
       ],
     );
   }
