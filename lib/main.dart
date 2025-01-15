@@ -117,7 +117,7 @@ class _MainScreenState extends State<MainScreen> {
 Widget build(BuildContext context) {
  double appBarHeight = 50;
 
-    if (_selectedIndex == 1 || _selectedIndex == 4) {
+    if (_selectedIndex == 1 || _selectedIndex == 4 || _selectedIndex == 3 || _selectedIndex == 2) {
       appBarHeight = 0; // Hide the AppBar completely
     } else if (_selectedIndex == 0) { // Search page
       appBarHeight = 60; // Slightly taller for the search bar
