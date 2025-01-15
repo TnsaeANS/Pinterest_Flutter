@@ -13,59 +13,51 @@ class ProfileScreen extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(width: 10), 
+            const SizedBox(width: 5), 
             GestureDetector(
               onTap: () {
                 // Handle the icon tap
                 print("Profile icon tapped");
-                // You can navigate to another page or perform any action here
               },
               child: CircleAvatar(
                 backgroundImage: AssetImage('assets/profile.png'),
-                radius: 15, // Adjust this value to control the size of the CircleAvatar
+                radius: 15,
               ),
             ),
-            const SizedBox(width: 80), // Space after the avatar
+            const SizedBox(width: 80), 
             Column(
               children: [
-                
                 const Text(
                   "All",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 17,
                     color: Colors.white,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(height: 4), // Space between text and underline
+                const SizedBox(height: 4), 
                 Container(
-                  width: 40, // Adjust width as needed
-                  height: 4,  // Thickness of the underline
+                  width: 40,
+                  height: 4,
                   decoration: BoxDecoration(
-                    color: Colors.white, // Color of the underline
-                    borderRadius: BorderRadius.circular(2), // Rounded corners
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(2),
                   ),
                 ),
               ],
             ),
-            const SizedBox(width: 40), 
+            const SizedBox(width: 25), 
             Column(
               children: [
                 const Text(
                   "Board",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 17,
                     color: Colors.white,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 const SizedBox(height: 5), 
-                // Container(
-                //   width: 40, // Adjust width as needed
-                //   height: 4,  // Thickness of the underline
-                //   decoration: BoxDecoration(
-                //     color: Colors.white, // Color of the underline
-                //     borderRadius: BorderRadius.circular(2), // Rounded corners
-                //   ),
-                // ),
               ],
             ),
           ],
@@ -76,25 +68,32 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 10), // Space below the AppBar
+            const SizedBox(height: 10),
             SizedBox(
-              width: MediaQuery.of(context).size.width,
+              width: 380,
               height: 50,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    hintText: 'Search for ideas',
-                    prefixIcon: Icon(Icons.search, color: const Color.fromARGB(234, 90, 90, 90)),
-                    suffixIcon: Icon(Icons.camera_alt, color: const Color.fromARGB(234, 90, 90, 90)),
-                    hintStyle: TextStyle(fontSize: 15, color: const Color.fromARGB(94, 228, 228, 228)),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(40),
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          hintText: 'Search for ideas',
+                          prefixIcon: Icon(Icons.search, color: const Color.fromARGB(234, 90, 90, 90)),
+                          hintStyle: TextStyle(fontSize: 15, color: const Color.fromARGB(94, 228, 228, 228)),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(40),
+                          ),
+                          filled: true,
+                          fillColor: const Color.fromARGB(28, 218, 218, 218),
+                        ),
+                      ),
                     ),
-                    filled: true,
-                    fillColor: const Color.fromARGB(28, 218, 218, 218),
-                  ),
+                    const SizedBox(width: 10), // Optional spacing between the text field and the icon
+                    const Icon(Icons.add, size: 40, color: Color.fromARGB(255, 255, 255, 255)),
+                  ],
                 ),
               ),
             ),
