@@ -3,9 +3,10 @@ import 'package:pinterest_flutter/constants/colors.dart';
 import 'pages/nav.dart';
 import 'pages/home.dart';
 import 'pages/search.dart';
-import 'pages/add.dart';
 import 'pages/profile.dart';
 import 'pages/chat.dart';
+import 'pages/add/add_college.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -101,9 +102,9 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _pages = [
     HomePage(),
     SearchPage(),
-    AddScreen(),
     ChatScreen(),
     ProfileScreen(),
+    AddCollegeScreen(),
   ];
 
   void _onItemTapped(int index) {
