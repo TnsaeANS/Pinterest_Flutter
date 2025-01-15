@@ -20,34 +20,31 @@ class NavBar extends StatelessWidget {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
-      isScrollControlled: true,  // This will allow for a custom modal height
-      backgroundColor: Colors.grey[900],  // Dark gray background
+      isScrollControlled: true,
+      backgroundColor: Colors.grey[900],
       builder: (BuildContext context) {
         return Container(
           padding: const EdgeInsets.all(16),
-          constraints: BoxConstraints(maxHeight: 200),  // Decrease the height of the popup
+          constraints: BoxConstraints(maxHeight: 200),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Row containing the close button and the centered text
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  // Close button
                   IconButton(
                     icon: const Icon(Icons.close, color: Colors.white),
                     onPressed: () {
                       Navigator.pop(context);
                     },
                   ),
-                  // Centered Text
                   Expanded(
                     child: Center(
                       child: const Text(
                         'Start creating now',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20,  // Adjust font size for better fit
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -55,38 +52,33 @@ class NavBar extends StatelessWidget {
                   ),
                 ],
               ),
-              // Options below the text
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  // Pin Button with black background and rounded edges
                   Column(
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.black,  // Black background
-                          borderRadius: BorderRadius.circular(8),  // Rounded edges
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(8),
                         ),
                         padding: const EdgeInsets.all(12),
                         child: IconButton(
                           icon: const Icon(Icons.push_pin, color: Colors.white),
-                          onPressed: () {
-                            
-                          },
+                          onPressed: () {},
                         ),
                       ),
-                      const SizedBox(height: 8), // Space between icon and text
+                      const SizedBox(height: 8),
                       const Text('Pin', style: TextStyle(color: Colors.white)),
                     ],
                   ),
-                  // Collage Button with black background and rounded edges
                   Column(
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.black,  // Black background
-                          borderRadius: BorderRadius.circular(8),  // Rounded edges
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(8),
                         ),
                         padding: const EdgeInsets.all(12),
                         child: IconButton(
@@ -94,32 +86,29 @@ class NavBar extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => AddCollegeScreen()), // Navigate to add_collage page
+                              MaterialPageRoute(builder: (context) => AddCollegeScreen()),
                             );
                           },
                         ),
                       ),
-                      const SizedBox(height: 8), // Space between icon and text
+                      const SizedBox(height: 8),
                       const Text('Collage', style: TextStyle(color: Colors.white)),
                     ],
                   ),
-                  // Board Button with black background and rounded edges
                   Column(
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.black,  // Black background
-                          borderRadius: BorderRadius.circular(8),  // Rounded edges
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(8),
                         ),
                         padding: const EdgeInsets.all(12),
                         child: IconButton(
                           icon: const Icon(Icons.dashboard, color: Colors.white),
-                          onPressed: () {
-                            
-                          },
+                          onPressed: () {},
                         ),
                       ),
-                      const SizedBox(height: 8), // Space between icon and text
+                      const SizedBox(height: 8),
                       const Text('Board', style: TextStyle(color: Colors.white)),
                     ],
                   ),
@@ -139,35 +128,35 @@ class NavBar extends StatelessWidget {
       type: BottomNavigationBarType.fixed,
       currentIndex: selectedIndex,
       onTap: (index) {
-        if (index == 2) { // The index for the Add button
+        if (index == 2) {
           _showAddOptions(context);
         } else {
           onItemTapped(index);
         }
       },
-      selectedItemColor: MainColor.secondaryColor, // Use the red from MainColor
-      unselectedItemColor: MainColor.accentColor, // Use white from MainColor
-      items: [
-        const BottomNavigationBarItem(
+      selectedItemColor: MainColor.secondaryColor,
+      unselectedItemColor: MainColor.accentColor,
+      items: const [
+        BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: '',
         ),
-        const BottomNavigationBarItem(
+        BottomNavigationBarItem(
           icon: Icon(Icons.search),
           label: '',
         ),
-        const BottomNavigationBarItem(
+        BottomNavigationBarItem(
           icon: Icon(Icons.add),
           label: '',
         ),
-        const BottomNavigationBarItem(
+        BottomNavigationBarItem(
           icon: Icon(Icons.chat),
           label: '',
         ),
-        const BottomNavigationBarItem(
+        BottomNavigationBarItem(
           icon: CircleAvatar(
             backgroundImage: AssetImage('assets/profile.png'),
-            radius: 15, // Adjust this value to control the size of the CircleAvatar
+            radius: 15,
           ),
           label: '',
         ),

@@ -102,9 +102,9 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _pages = [
     HomePage(),
     SearchPage(),
-    ChatScreen(),
-    ProfileScreen(),
-    AddCollegeScreen(),
+   AddCollegeScreen(),
+   ChatScreen(),
+  ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
