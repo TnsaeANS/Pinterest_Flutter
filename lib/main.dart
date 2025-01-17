@@ -6,6 +6,7 @@ import 'pages/search.dart';
 import 'pages/profile.dart';
 import 'pages/chat.dart';
 import 'pages/add/add_college.dart';
+import 'pages/add/text.dart';
 
 
 void main() {
@@ -105,6 +106,7 @@ class _MainScreenState extends State<MainScreen> {
    AddCollegeScreen(),
    ChatScreen(),
   ProfileScreen(),
+  TextEditorScreen()
   ];
 
   void _onItemTapped(int index) {
