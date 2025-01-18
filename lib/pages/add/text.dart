@@ -38,23 +38,40 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
         children: [
           Expanded(
             child: Center(
-              child: TextField(
-                onChanged: (value) {
-                  setState(() {
-                    _text = value;
-                  });
-                },
-                decoration: InputDecoration(
-                  hintText: "Type something...",
-                  hintStyle: TextStyle(
-                    fontSize: _fontSize,
-                    color: Colors.grey,
-                    fontStyle: FontStyle.italic,
-                  ),
-                  border: InputBorder.none,
+              child: Container(
+                width: 400.0, // Set a fixed width
+                height: 400.0, // Set a fixed height
+                decoration: BoxDecoration(
+                  color: Colors.white, // Set background color to white
+                  borderRadius:
+                      BorderRadius.circular(10.0), // Add border radius
                 ),
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: _fontSize, color: Colors.white),
+                padding: const EdgeInsets.symmetric(
+                    horizontal:
+                        16.0), // Optional: Add padding for better spacing
+                child: TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      _text = value;
+                    });
+                  },
+                  decoration: InputDecoration(
+                    hintText: "Type something...",
+                    hintStyle: TextStyle(
+                      fontSize: _fontSize,
+                      color: Colors.grey,
+                      fontStyle: FontStyle.italic,
+                    ),
+                    border: InputBorder.none, // Remove default border
+                    contentPadding: EdgeInsets.symmetric(
+                        vertical: 170.0), // Center the text vertically
+                  ),
+
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: _fontSize,
+                      color: Colors.black), // Black text for visibility
+                ),
               ),
             ),
           ),

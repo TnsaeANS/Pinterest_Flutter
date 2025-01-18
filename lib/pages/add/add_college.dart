@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:pinterest_flutter/pages/add/text.dart';
+
+enum PenType {
+  pencil,
+  brush,
+  pen,
+}
+
 class AddCollegeScreen extends StatefulWidget {
   const AddCollegeScreen({super.key});
 
@@ -12,6 +19,7 @@ class _AddCollegeScreenState extends State<AddCollegeScreen> {
   final List<Path> _redoStack = []; // Stores paths for redo
   Color _selectedColor = Colors.black; // Default pen color
   double _penStrokeWidth = 4.0; // Default pen stroke width
+  PenType? _selectedPenType; // Selected pen type
 
   @override
   Widget build(BuildContext context) {
@@ -109,9 +117,7 @@ class _AddCollegeScreenState extends State<AddCollegeScreen> {
                             IconButton(
                               icon: const Icon(Icons.more_horiz,
                                   color: Colors.black),
-                              onPressed: () {
-                                // Options functionality
-                              },
+                              onPressed: _showPenOptions,
                             ),
                             IconButton(
                               icon: const Icon(Icons.arrow_forward,
@@ -126,13 +132,6 @@ class _AddCollegeScreenState extends State<AddCollegeScreen> {
                     ),
                   ),
                   // Center Content
-                  Center(
-                    child: Text(
-                      'Add College',
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    ),
-                  ),
                 ],
               ),
             ),
@@ -141,47 +140,62 @@ class _AddCollegeScreenState extends State<AddCollegeScreen> {
       ),
       // Bottom Navigation Bar
       bottomNavigationBar: BottomNavigationBar(
-  type: BottomNavigationBarType.fixed,
-  backgroundColor: Colors.black,
-  selectedItemColor: Colors.white,
-  unselectedItemColor: Colors.grey,
-  items: const [
-    BottomNavigationBarItem(
-      icon: Icon(Icons.brush), // Sketching Icon
-      label: '',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.text_fields), // 'T' Icon
-      label: '',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.add), // '+' Icon
-      label: '',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.image), // Image Icon
-      label: '',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.camera_alt), // Camera Icon
-      label: '',
-    ),
-  ],
-  onTap: (index) {
-    if (index == 1) {
-      // Navigate to the Text Editor screen when 'Text Icon' is tapped
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => TextEditorScreen()),
-      );
-    }
-    // Handle other index cases if needed
-  },
-),
-
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.black,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.brush), // Sketching Icon
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.text_fields), // 'T' Icon
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add), // '+' Icon
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.image), // Image Icon
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.camera_alt), // Camera Icon
+            label: '',
+          ),
+        ],
+        onTap: (index) {
+          if (index == 0) {
+            _showPenOptions(); // Call the method to show the options
+          } else if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TextEditorScreen()),
+            );
+          }
+          // Handle other index cases if needed
+        },
+      ),
     );
   }
 
+  // Change Pen Type
+  void _changePenType(PenType type) {
+    setState(() {
+      _selectedPenType = type;
+    });
+  }
+
+  // Change Pen Color
+  void _changePenColor(Color color) {
+    setState(() {
+      _selectedColor = color;
+    });
+  }
+
+  // Undo the last path
   void _undo() {
     if (_paths.isNotEmpty) {
       setState(() {
@@ -191,6 +205,7 @@ class _AddCollegeScreenState extends State<AddCollegeScreen> {
     }
   }
 
+  // Redo the last undone path
   void _redo() {
     if (_redoStack.isNotEmpty) {
       setState(() {
@@ -200,11 +215,12 @@ class _AddCollegeScreenState extends State<AddCollegeScreen> {
     }
   }
 
+  // Show Pen Options
   void _showPenOptions() {
     showModalBottomSheet(
       context: context,
       builder: (context) => Container(
-        height: 200,
+        height: 250,
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
@@ -229,6 +245,24 @@ class _AddCollegeScreenState extends State<AddCollegeScreen> {
                 ),
               ],
             ),
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: PenType.values.map((penType) {
+                return GestureDetector(
+                  onTap: () => _changePenType(penType),
+                  child: Column(
+                    children: [
+                      Icon(
+                        _getPenIcon(penType),
+                        size: 36.0,
+                      ),
+                      Text(penType.name.toUpperCase()),
+                    ],
+                  ),
+                );
+              }).toList(),
+            ),
             Slider(
               value: _penStrokeWidth,
               min: 2.0,
@@ -245,11 +279,17 @@ class _AddCollegeScreenState extends State<AddCollegeScreen> {
     );
   }
 
-  void _changePenColor(Color color) {
-    setState(() {
-      _selectedColor = color;
-    });
-    Navigator.pop(context); // Close the bottom sheet
+  IconData _getPenIcon(PenType penType) {
+    switch (penType) {
+      case PenType.brush:
+        return Icons.brush;// Brush icon
+      case PenType.pencil:
+        return Icons.edit; // Pencil icon
+      case PenType.pen:
+        return Icons.edit; // Pen icon
+      default:
+        return Icons.create; // Default icon
+    }
   }
 }
 
@@ -282,6 +322,7 @@ class DottedBackgroundPainter extends CustomPainter {
   }
 }
 
+// Custom Painter for Drawing
 class DrawingPainter extends CustomPainter {
   final List<Path> paths;
   final Color color;
