@@ -1,60 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:pinterest_flutter/constants/colors.dart';
-import 'package:pinterest_flutter/pages/nav.dart';
 
 class BoardsScreen extends StatelessWidget {
-  // final List<String> imagePaths = [
-  //   'assets/40.jpg',
-  //   'assets/41.jpg',
-  //   'assets/42.png',
-  //   'assets/43.jpg',
-  //   'assets/44.png',
-  //   'assets/45.png',
-  //   'assets/46.jpg',
-  //   'assets/47.jpg',
-  //   'assets/48.jpg',
-  //   'assets/49.jpg',
-  //   'assets/50.jpg',
-  //   'assets/51.jpg',
-  //   'assets/52.jpg',
-  //   'assets/53.jpg',
-  //   'assets/54.jpg',
-  //   'assets/55.jpg',
-  //   'assets/56.jpg',
-  //   'assets/57.jpg',
-  //   'assets/58.jpg',
-  //   'assets/59.jpg',
-  //   'assets/60.jpg',
-  //   'assets/61.jpg',
-  //   'assets/1.jpg',
-  //   'assets/37.jpg',
-  //   'assets/2.jpg',
-  //   'assets/3.jpg',
-  //   'assets/38.jpg',
-  //   'assets/4.jpg',
-  //   'assets/5.jpg',
-  //   'assets/39.jpg',
-  //   'assets/6.jpg',
-  //   'assets/7.jpg',
-  //   'assets/8.jpg',
-  //   'assets/9.jpg',
-  //   'assets/10.jpg',
-  //   'assets/11.jpg',
-  //   'assets/12.jpg',
-  //   'assets/13.jpg',
-  //   'assets/14.jpg',
-  //   'assets/15.jpg',
-  //   'assets/16.jpg',
-  //   'assets/17.jpg',
-  //   'assets/18.jpg',
-  //   'assets/19.jpg',
-  //   'assets/20.jpg',
-  //   'assets/21.jpg',
+  final List<String> imagePaths = [
+    'assets/40.jpg',
+    'assets/41.jpg',
+    'assets/42.png',
+    'assets/43.jpg',
+    'assets/44.png',
+    'assets/45.png',
+    'assets/46.jpg',
+    'assets/47.jpg',
+    'assets/48.jpg',
+    'assets/49.jpg',
+    'assets/50.jpg',
+    'assets/51.jpg',
+    'assets/52.jpg',
+    'assets/53.jpg',
+    'assets/54.jpg',
+    'assets/55.jpg',
+    'assets/56.jpg',
+    'assets/57.jpg',
+    'assets/58.jpg',
+    'assets/59.jpg',
+    'assets/60.jpg',
+    'assets/61.jpg',
+    'assets/1.jpg',
+    'assets/37.jpg',
+    'assets/2.jpg',
+    'assets/3.jpg',
+    'assets/38.jpg',
+    'assets/4.jpg',
+    'assets/5.jpg',
+    'assets/39.jpg',
+    'assets/6.jpg',
+    'assets/7.jpg',
+    'assets/8.jpg',
+    'assets/9.jpg',
+    'assets/10.jpg',
+    'assets/11.jpg',
+    'assets/12.jpg',
+    'assets/13.jpg',
+    'assets/14.jpg',
+    'assets/15.jpg',
+    'assets/16.jpg',
+    'assets/17.jpg',
+    'assets/18.jpg',
+    'assets/19.jpg',
+    'assets/20.jpg',
+    'assets/21.jpg',
 
-  // ];
+  ];
 
-  const BoardsScreen({super.key});
+  BoardsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -117,12 +116,7 @@ GestureDetector(
           ],
         ),
       ),
-      bottomNavigationBar: NavBar(
-      selectedIndex: 2, // Set this to the index of the Boards page in your NavBar
-      onItemTapped: (int idx) {
-        // Handle navigation between tabs if needed
-      },
-    ),
+      
       backgroundColor: MainColor.primaryColor,
       body: SingleChildScrollView(
         child: Column(
@@ -254,39 +248,705 @@ GestureDetector(
             ),
             const SizedBox(height: 15),
 
-            // Masonry Grid
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            //   child: MasonryGridView.builder(
-            //     physics: const NeverScrollableScrollPhysics(), 
-            //     shrinkWrap: true, // Ensure grid fits within its parent
-            //     gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-            //       crossAxisCount: 3,
-            //     ),
-            //     itemCount: imagePaths.length,
-            //     itemBuilder: (context, index) {
-            //       return Card(
-            //         clipBehavior: Clip.antiAlias,
-            //         shape: RoundedRectangleBorder(
-            //           borderRadius: BorderRadius.circular(12),
-            //         ),
-            //         child: Image.asset(
-            //           imagePaths[index],
-            //           fit: BoxFit.cover,
-            //         ),
-            //       );
-            //     },
-            //   ),
-            // ),
-          ],
+            
+           
+  // first board         
+  Row(
+    children: [
+      Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+  child: Column(
+    children: [
+      SizedBox(
+        width: 170,
+        height: 150,
+        child: Card(
+          clipBehavior: Clip.antiAlias,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Image.asset(
+                  imagePaths[2],
+                  fit: BoxFit.cover,
+                  height: double.infinity,
+                ),
+              ),
+              SizedBox(width: 1),
+              Expanded(
+                flex: 1,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Image.asset(
+                        imagePaths[1],
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      ),
+                    ),
+                    SizedBox(height: 1),
+                    Expanded(
+                      child: Image.asset(
+                        imagePaths[3],
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
-    );
-  }
+      const Text(
+        'Abstract', // Replace with your desired text
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+
+      Row(
+        children: [
+          const Text(
+            '19 Pins', // Replace with your desired text
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 10,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          SizedBox(width: 3),
+          const Text(
+            '1W', // Replace with your desired text
+            style: TextStyle(
+              color: Color.fromARGB(131, 255, 255, 255),
+              fontSize: 10,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
+    ],
+  ),
+),
+        
+      
+      
+      // second board         
+      Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 0),
+      child: Column(
+        children: [
+          SizedBox(
+        width: 170,
+        height: 150,
+        child: Card(
+          clipBehavior: Clip.antiAlias,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            children: [
+          Expanded(
+            flex: 2,
+            child: Image.asset(
+              imagePaths[5],
+              fit: BoxFit.cover,
+              height: double.infinity,
+            ),
+          ),
+          SizedBox(width: 1),
+          Expanded(
+            flex: 1,
+            child: Column(
+              children: [
+            Expanded(
+              child: Image.asset(
+                imagePaths[6],
+                fit: BoxFit.cover,
+                width: double.infinity,
+              ),
+            ),
+            SizedBox(height: 1),
+            Expanded(
+              child: Image.asset(
+                imagePaths[8],
+                fit: BoxFit.cover,
+                width: double.infinity,
+              ),
+            ),
+              ],
+            ),
+          ),
+            ],
+          ),
+        ),
+          ),
+          const Text(
+        'Nature', // Replace with your desired text
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+        ),
+          ),
+          Row(
+        children: [
+          const Text(
+            '25 Pins', // Replace with your desired text
+            style: TextStyle(
+          color: Colors.white,
+          fontSize: 10,
+          fontWeight: FontWeight.w500,
+            ),
+          ),
+          SizedBox(width: 3),
+          const Text(
+            '2W', // Replace with your desired text
+            style: TextStyle(
+          color: Color.fromARGB(131, 255, 255, 255),
+          fontSize: 10,
+          fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+          ),
+        ],
+      ),
+      ),
+    ],
+  ),
+
+SizedBox(height: 20),
+  // second row board         
+  Row(
+    children: [
+      Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Column(
+        children: [
+          SizedBox(
+            width: 170,
+            height: 150,
+            child: Card(
+              clipBehavior: Clip.antiAlias,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Image.asset(
+                      imagePaths[11],
+                      fit: BoxFit.cover,
+                      height: double.infinity,
+                    ),
+                  ),
+                  SizedBox(width: 1),
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Image.asset(
+                            imagePaths[12],
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                          ),
+                        ),
+                        SizedBox(height: 1),
+                        Expanded(
+                          child: Image.asset(
+                            imagePaths[13],
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const Text(
+            'Cats', // Replace with your desired text
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          Row(
+            children: [
+              const Text(
+                '30 Pins', // Replace with your desired text
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              SizedBox(width: 3),
+              const Text(
+                '3W', // Replace with your desired text
+                style: TextStyle(
+                  color: Color.fromARGB(131, 255, 255, 255),
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ],
+      )
+        ),
+        
+      
+      // second board         
+      Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Column(
+        children: [
+          SizedBox(
+            width: 170,
+            height: 150,
+            child: Card(
+              clipBehavior: Clip.antiAlias,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Image.asset(
+                      imagePaths[31],
+                      fit: BoxFit.cover,
+                      height: double.infinity,
+                    ),
+                  ),
+                  SizedBox(width: 1),
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Image.asset(
+                            imagePaths[32],
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                          ),
+                        ),
+                        SizedBox(height: 1),
+                        Expanded(
+                          child: Image.asset(
+                            imagePaths[33],
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const Text(
+            'Arts', // Replace with your desired text
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          Row(
+            children: [
+              const Text(
+                '40 Pins', // Replace with your desired text
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              SizedBox(width: 3),
+              const Text(
+                '1D', // Replace with your desired text
+                style: TextStyle(
+                  color: Color.fromARGB(131, 255, 255, 255),
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ],
+      )
+        ),    ],
+  ),
+
+  SizedBox(height: 20),
+  // 3rd row board         
+  Row(
+    children: [
+      Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Column(
+        children: [
+          SizedBox(
+            width: 170,
+            height: 150,
+            child: Card(
+              clipBehavior: Clip.antiAlias,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Image.asset(
+                      imagePaths[24],
+                      fit: BoxFit.cover,
+                      height: double.infinity,
+                    ),
+                  ),
+                  SizedBox(width: 1),
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Image.asset(
+                            imagePaths[27],
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                          ),
+                        ),
+                        SizedBox(height: 1),
+                        Expanded(
+                          child: Image.asset(
+                            imagePaths[29],
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const Text(
+            'Pretty Stress', // Replace with your desired text
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          Row(
+            children: [
+              const Text(
+                '10 Pins', // Replace with your desired text
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              SizedBox(width: 3),
+              const Text(
+                '4W', // Replace with your desired text
+                style: TextStyle(
+                  color: Color.fromARGB(131, 255, 255, 255),
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ],
+      )
+        ),
+        
+        
+      // second board         
+      Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Column(
+        children: [
+          SizedBox(
+            width: 170,
+            height: 150,
+            child: Card(
+              clipBehavior: Clip.antiAlias,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Image.asset(
+                      imagePaths[21],
+                      fit: BoxFit.cover,
+                      height: double.infinity,
+                    ),
+                  ),
+                  SizedBox(width: 1),
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Image.asset(
+                            imagePaths[26],
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                          ),
+                        ),
+                        SizedBox(height: 1),
+                        Expanded(
+                          child: Image.asset(
+                            imagePaths[20],
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const Text(
+            'Oldies', // Replace with your desired text
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          Row(
+            children: [
+              const Text(
+                '10 Pins', // Replace with your desired text
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              SizedBox(width: 3),
+              const Text(
+                '4W', // Replace with your desired text
+                style: TextStyle(
+                  color: Color.fromARGB(131, 255, 255, 255),
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ],
+      )
+        ),
+    ],
+  ),
+
+  SizedBox(height: 20),
+  // lat row board         
+  Row(
+    children: [
+      Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Column(
+        children: [
+          SizedBox(
+            width: 170,
+            height: 150,
+            child: Card(
+              clipBehavior: Clip.antiAlias,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Image.asset(
+                      imagePaths[18],
+                      fit: BoxFit.cover,
+                      height: double.infinity,
+                    ),
+                  ),
+                  SizedBox(width: 1),
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Image.asset(
+                            imagePaths[19],
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                          ),
+                        ),
+                        SizedBox(height: 1),
+                        Expanded(
+                          child: Image.asset(
+                            imagePaths[22],
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const Text(
+            'Houses', // Replace with your desired text
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          Row(
+            children: [
+              const Text(
+                '15 Pins', // Replace with your desired text
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              SizedBox(width: 3),
+              const Text(
+                '1W', // Replace with your desired text
+                style: TextStyle(
+                  color: Color.fromARGB(131, 255, 255, 255),
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ],
+      )
+        ),
+        
+      
+      
+      // last board         
+      Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Column(
+        children: [
+          SizedBox(
+            width: 170,
+            height: 150,
+            child: Card(
+              clipBehavior: Clip.antiAlias,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Image.asset(
+                      imagePaths[15],
+                      fit: BoxFit.cover,
+                      height: double.infinity,
+                    ),
+                  ),
+                  SizedBox(width: 1),
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Image.asset(
+                            imagePaths[16],
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                          ),
+                        ),
+                        SizedBox(height: 1),
+                        Expanded(
+                          child: Image.asset(
+                            imagePaths[18],
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const Text(
+            'Music Bands', // Replace with your desired text
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          Row(
+            children: [
+              const Text(
+                '35 Pins', // Replace with your desired text
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              SizedBox(width: 3),
+              const Text(
+                '1M', // Replace with your desired text
+                style: TextStyle(
+                  color: Color.fromARGB(131, 255, 255, 255),
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ],
+      )
+        ),
+    ],
+  ),
+
+  SizedBox(height: 20),
+  ],)
+),);
 }
 
 void main() {
   runApp(MaterialApp(
     home: BoardsScreen(),
   ));
+}
 }
