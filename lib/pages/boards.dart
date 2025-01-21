@@ -169,9 +169,8 @@ GestureDetector(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const SizedBox(width: 15),
-                // Favorites Button
                 Container(
-                  width: 60,
+                  width: 59,
                   height: 47,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
@@ -184,41 +183,40 @@ GestureDetector(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
+                      SizedBox(width: 4),
                       Icon(
-                        Icons.grid_view_rounded,
-                        color: Colors.white, 
-                        size: 35, 
+                        Icons.swap_vert,
+                        color: Colors.white,
+                        size: 23,
                       ),
-                      SizedBox(width: 2),
+                      Icon(
+                        Icons.keyboard_arrow_down,
+                        color: Colors.white,
+                        size: 30,
+                      ),
                     ],
                   ),
                 ),
-                const SizedBox(width: 5), 
+                const SizedBox(width: 5),
                 Container(
-                  width: 105, 
-                  height: 47, 
+                  width: 70,
+                  height: 47,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     border: Border.all(
-                      color: Colors.white, 
-                      width: 0.5, 
+                      color: Colors.white,
+                      width: 0.5,
                     ),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
-                      Icon(
-                        Icons.star, 
-                        color: Colors.white, 
-                        size: 23, 
-                      ),
-                      SizedBox(width: 2), 
                       Text(
-                        'Favourites',
+                        'Group',
                         style: TextStyle(
-                          color: Colors.white, 
-                          fontSize: 13, 
+                          color: Colors.white,
+                          fontSize: 13,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -227,7 +225,7 @@ GestureDetector(
                 ),
                 const SizedBox(width: 5),
                 Container(
-                  width: 110,
+                  width: 75,
                   height: 47,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
@@ -242,10 +240,10 @@ GestureDetector(
                     children: const [
                       SizedBox(width: 2),
                       Text(
-                        'Created by you', // Change the text for the new button
+                        'Secret',
                         style: TextStyle(
-                          color: Colors.white, // Text color for the new button
-                          fontSize: 13, // Text size for the new button
+                          color: Colors.white,
+                          fontSize: 13,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
