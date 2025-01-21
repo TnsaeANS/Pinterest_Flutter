@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pinterest_flutter/constants/colors.dart';
 import 'package:pinterest_flutter/pages/add/add_college.dart';
+import 'package:pinterest_flutter/pages/add/add_board.dart';
 
 
 
@@ -105,7 +106,12 @@ class NavBar extends StatelessWidget {
                         padding: const EdgeInsets.all(12),
                         child: IconButton(
                           icon: const Icon(Icons.dashboard, color: Colors.white),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => AddBoardScreen()),
+                            );
+                          },
                         ),
                       ),
                       const SizedBox(height: 8),
