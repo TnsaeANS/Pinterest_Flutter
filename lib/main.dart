@@ -105,7 +105,7 @@ class _MainScreenState extends State<MainScreen> {
     HomePage(),
     SearchPage(),
     AddCollegeScreen(),
-    ChatScreen(),
+    NewMessageScreen(),
     ProfileScreen(),
     TextEditorScreen(),
     AddBoardScreen(),
