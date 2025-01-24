@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:pinterest_flutter/constants/colors.dart';
 import 'boards.dart';
+import 'profilePage.dart';
 
 class ProfileScreen extends StatelessWidget {
   final List<String> imagePaths = [
@@ -12,7 +13,7 @@ class ProfileScreen extends StatelessWidget {
     'assets/44.png',
     'assets/45.png',
     'assets/46.jpg',
-    'assets/47.jpg',
+    'assets/47.png',
     'assets/48.jpg',
     'assets/49.jpg',
     'assets/50.jpg',
@@ -51,7 +52,6 @@ class ProfileScreen extends StatelessWidget {
     'assets/19.jpg',
     'assets/20.jpg',
     'assets/21.jpg',
-
   ];
 
   ProfileScreen({super.key});
@@ -66,9 +66,15 @@ class ProfileScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(width: 5),
-             CircleAvatar(
+            GestureDetector(
+              onTap: () {Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => ProfilePage()),
+                    );
+              },
+              child: CircleAvatar(
                 backgroundImage: AssetImage('assets/profile.png'),
                 radius: 15,
+              ),
             ),
             const SizedBox(width: 80),
             Column(
@@ -95,23 +101,23 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(width: 25),
             Column(
               children: [
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context).push(
-  MaterialPageRoute(builder: (context) => BoardsScreen()),
-);
-            },
-            child: const Text(
-              "Boards",
-              style: TextStyle(
-                fontSize: 17,
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-          const SizedBox(height: 5),
-        ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => BoardsScreen()),
+                    );
+                  },
+                  child: const Text(
+                    "Boards",
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 5),
+              ],
             ),
           ],
         ),
@@ -179,22 +185,22 @@ class ProfileScreen extends StatelessWidget {
                     children: const [
                       Icon(
                         Icons.grid_view_rounded,
-                        color: Colors.white, 
-                        size: 35, 
+                        color: Colors.white,
+                        size: 35,
                       ),
                       SizedBox(width: 2),
                     ],
                   ),
                 ),
-                const SizedBox(width: 5), 
+                const SizedBox(width: 5),
                 Container(
-                  width: 105, 
-                  height: 47, 
+                  width: 105,
+                  height: 47,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     border: Border.all(
-                      color: Colors.white, 
-                      width: 0.5, 
+                      color: Colors.white,
+                      width: 0.5,
                     ),
                   ),
                   child: Row(
@@ -202,16 +208,16 @@ class ProfileScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
                       Icon(
-                        Icons.star, 
-                        color: Colors.white, 
-                        size: 23, 
+                        Icons.star,
+                        color: Colors.white,
+                        size: 23,
                       ),
-                      SizedBox(width: 2), 
+                      SizedBox(width: 2),
                       Text(
                         'Favourites',
                         style: TextStyle(
-                          color: Colors.white, 
-                          fontSize: 13, 
+                          color: Colors.white,
+                          fontSize: 13,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -253,7 +259,7 @@ class ProfileScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: MasonryGridView.builder(
-                physics: const NeverScrollableScrollPhysics(), 
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true, // Ensure grid fits within its parent
                 gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
@@ -279,6 +285,8 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
+
+
 
 void main() {
   runApp(MaterialApp(
