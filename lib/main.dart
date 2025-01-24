@@ -8,6 +8,7 @@ import 'pages/chat.dart';
 import 'pages/add/add_college.dart';
 import 'pages/add/add_board.dart';
 import 'pages/add/text.dart';
+import 'pages/add/pins.dart';
 
 void main() {
   runApp(const MyApp());
@@ -109,6 +110,7 @@ class _MainScreenState extends State<MainScreen> {
     ProfileScreen(),
     TextEditorScreen(),
     AddBoardScreen(),
+    PinsScreen(),
   ];
 
   void _onItemTapped(int index) {
