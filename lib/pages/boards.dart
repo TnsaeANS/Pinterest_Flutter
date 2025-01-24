@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:pinterest_flutter/constants/colors.dart';
+import 'profilePage.dart';
 
 class BoardsScreen extends StatelessWidget {
   final List<String> imagePaths = [
@@ -66,9 +66,15 @@ class BoardsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(width: 5),
-             CircleAvatar(
+             GestureDetector(
+              onTap: () {Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => ProfilePage()),
+                    );
+              },
+              child: CircleAvatar(
                 backgroundImage: AssetImage('assets/profile.png'),
                 radius: 15,
+              ),
             ),
             const SizedBox(width: 80),
             Column(
@@ -256,6 +262,7 @@ GestureDetector(
       Padding(
   padding: const EdgeInsets.symmetric(horizontal: 10.0),
   child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       SizedBox(
         width: 170,
@@ -302,19 +309,25 @@ GestureDetector(
           ),
         ),
       ),
+      
+
+
+      Padding(
+  padding: const EdgeInsets.only(left: 12.0), 
+  child: Column(
+    children: [
       const Text(
-        'Abstract', // Replace with your desired text
+        'Abstract', 
         style: TextStyle(
           color: Colors.white,
           fontSize: 14,
           fontWeight: FontWeight.w500,
         ),
       ),
-
       Row(
         children: [
           const Text(
-            '19 Pins', // Replace with your desired text
+            '19 Pins', 
             style: TextStyle(
               color: Colors.white,
               fontSize: 10,
@@ -323,7 +336,7 @@ GestureDetector(
           ),
           SizedBox(width: 3),
           const Text(
-            '1W', // Replace with your desired text
+            '  1W', 
             style: TextStyle(
               color: Color.fromARGB(131, 255, 255, 255),
               fontSize: 10,
@@ -335,13 +348,19 @@ GestureDetector(
     ],
   ),
 ),
+
+
+    ],
+  ),
+),
         
       
       
       // second board         
       Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
         width: 170,
@@ -388,8 +407,15 @@ GestureDetector(
           ),
         ),
           ),
+
+
+  Padding(
+  padding: const EdgeInsets.only(left: 12.0), // Add 8 pixels of padding to the left
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [  
           const Text(
-        'Nature', // Replace with your desired text
+        'Nature', 
         style: TextStyle(
           color: Colors.white,
           fontSize: 14,
@@ -399,7 +425,7 @@ GestureDetector(
           Row(
         children: [
           const Text(
-            '25 Pins', // Replace with your desired text
+            '25 Pins', 
             style: TextStyle(
           color: Colors.white,
           fontSize: 10,
@@ -408,7 +434,7 @@ GestureDetector(
           ),
           SizedBox(width: 3),
           const Text(
-            '2W', // Replace with your desired text
+            '  2W', 
             style: TextStyle(
           color: Color.fromARGB(131, 255, 255, 255),
           fontSize: 10,
@@ -416,7 +442,9 @@ GestureDetector(
             ),
           ),
         ],
-          ),
+          ),],),)
+
+          
         ],
       ),
       ),
@@ -430,6 +458,7 @@ SizedBox(height: 20),
       Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             width: 170,
@@ -476,8 +505,15 @@ SizedBox(height: 20),
               ),
             ),
           ),
+
+
+ Padding(
+  padding: const EdgeInsets.only(left: 12.0), // Add 8 pixels of padding to the left
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [ 
           const Text(
-            'Cats', // Replace with your desired text
+            'Cats', 
             style: TextStyle(
               color: Colors.white,
               fontSize: 14,
@@ -487,7 +523,7 @@ SizedBox(height: 20),
           Row(
             children: [
               const Text(
-                '30 Pins', // Replace with your desired text
+                '30 Pins', 
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 10,
@@ -496,7 +532,7 @@ SizedBox(height: 20),
               ),
               SizedBox(width: 3),
               const Text(
-                '3W', // Replace with your desired text
+                '  3W', 
                 style: TextStyle(
                   color: Color.fromARGB(131, 255, 255, 255),
                   fontSize: 10,
@@ -505,6 +541,7 @@ SizedBox(height: 20),
               ),
             ],
           ),
+        ]))
         ],
       )
         ),
@@ -514,6 +551,7 @@ SizedBox(height: 20),
       Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             width: 170,
@@ -560,8 +598,16 @@ SizedBox(height: 20),
               ),
             ),
           ),
+
+
+
+  Padding(
+  padding: const EdgeInsets.only(left: 12.0), 
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [ 
           const Text(
-            'Arts', // Replace with your desired text
+            'Arts', 
             style: TextStyle(
               color: Colors.white,
               fontSize: 14,
@@ -571,7 +617,7 @@ SizedBox(height: 20),
           Row(
             children: [
               const Text(
-                '40 Pins', // Replace with your desired text
+                '40 Pins', 
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 10,
@@ -580,7 +626,7 @@ SizedBox(height: 20),
               ),
               SizedBox(width: 3),
               const Text(
-                '1D', // Replace with your desired text
+                '  1D', 
                 style: TextStyle(
                   color: Color.fromARGB(131, 255, 255, 255),
                   fontSize: 10,
@@ -589,6 +635,8 @@ SizedBox(height: 20),
               ),
             ],
           ),
+    ]))
+
         ],
       )
         ),    ],
@@ -601,6 +649,7 @@ SizedBox(height: 20),
       Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             width: 170,
@@ -647,8 +696,14 @@ SizedBox(height: 20),
               ),
             ),
           ),
+
+  Padding(
+  padding: const EdgeInsets.only(left: 12.0), 
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [ 
           const Text(
-            'Pretty Stress', // Replace with your desired text
+            'Pretty Stress', 
             style: TextStyle(
               color: Colors.white,
               fontSize: 14,
@@ -658,7 +713,7 @@ SizedBox(height: 20),
           Row(
             children: [
               const Text(
-                '10 Pins', // Replace with your desired text
+                '10 Pins', 
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 10,
@@ -667,7 +722,7 @@ SizedBox(height: 20),
               ),
               SizedBox(width: 3),
               const Text(
-                '4W', // Replace with your desired text
+                '  4W', 
                 style: TextStyle(
                   color: Color.fromARGB(131, 255, 255, 255),
                   fontSize: 10,
@@ -675,7 +730,10 @@ SizedBox(height: 20),
                 ),
               ),
             ],
-          ),
+          ),]))
+
+
+
         ],
       )
         ),
@@ -685,6 +743,7 @@ SizedBox(height: 20),
       Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             width: 170,
@@ -731,8 +790,14 @@ SizedBox(height: 20),
               ),
             ),
           ),
+
+          Padding(
+  padding: const EdgeInsets.only(left: 12.0), 
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [ 
           const Text(
-            'Oldies', // Replace with your desired text
+            'Oldies', 
             style: TextStyle(
               color: Colors.white,
               fontSize: 14,
@@ -742,7 +807,7 @@ SizedBox(height: 20),
           Row(
             children: [
               const Text(
-                '10 Pins', // Replace with your desired text
+                '10 Pins', 
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 10,
@@ -751,7 +816,7 @@ SizedBox(height: 20),
               ),
               SizedBox(width: 3),
               const Text(
-                '4W', // Replace with your desired text
+                '  4W', 
                 style: TextStyle(
                   color: Color.fromARGB(131, 255, 255, 255),
                   fontSize: 10,
@@ -760,6 +825,8 @@ SizedBox(height: 20),
               ),
             ],
           ),
+    ]))
+
         ],
       )
         ),
@@ -773,6 +840,7 @@ SizedBox(height: 20),
       Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             width: 170,
@@ -819,8 +887,15 @@ SizedBox(height: 20),
               ),
             ),
           ),
+
+
+          Padding(
+  padding: const EdgeInsets.only(left: 12.0), 
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [ 
           const Text(
-            'Houses', // Replace with your desired text
+            'Houses', 
             style: TextStyle(
               color: Colors.white,
               fontSize: 14,
@@ -830,7 +905,7 @@ SizedBox(height: 20),
           Row(
             children: [
               const Text(
-                '15 Pins', // Replace with your desired text
+                '15 Pins', 
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 10,
@@ -839,7 +914,7 @@ SizedBox(height: 20),
               ),
               SizedBox(width: 3),
               const Text(
-                '1W', // Replace with your desired text
+                '  1W', 
                 style: TextStyle(
                   color: Color.fromARGB(131, 255, 255, 255),
                   fontSize: 10,
@@ -847,7 +922,7 @@ SizedBox(height: 20),
                 ),
               ),
             ],
-          ),
+          ),]))
         ],
       )
         ),
@@ -858,6 +933,7 @@ SizedBox(height: 20),
       Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             width: 170,
@@ -904,8 +980,15 @@ SizedBox(height: 20),
               ),
             ),
           ),
+
+
+          Padding(
+  padding: const EdgeInsets.only(left: 12.0), 
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [ 
           const Text(
-            'Music Bands', // Replace with your desired text
+            'Music Bands', 
             style: TextStyle(
               color: Colors.white,
               fontSize: 14,
@@ -915,7 +998,7 @@ SizedBox(height: 20),
           Row(
             children: [
               const Text(
-                '35 Pins', // Replace with your desired text
+                '35 Pins', 
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 10,
@@ -924,7 +1007,7 @@ SizedBox(height: 20),
               ),
               SizedBox(width: 3),
               const Text(
-                '1M', // Replace with your desired text
+                '  1M', 
                 style: TextStyle(
                   color: Color.fromARGB(131, 255, 255, 255),
                   fontSize: 10,
@@ -932,7 +1015,7 @@ SizedBox(height: 20),
                 ),
               ),
             ],
-          ),
+          ),]))
         ],
       )
         ),
@@ -942,7 +1025,9 @@ SizedBox(height: 20),
   SizedBox(height: 20),
   ],)
 ),);
+
 }
+
 
 void main() {
   runApp(MaterialApp(
