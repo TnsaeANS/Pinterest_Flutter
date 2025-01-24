@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:pinterest_flutter/constants/colors.dart';
+import 'boards.dart';
 
 class ProfileScreen extends StatelessWidget {
   final List<String> imagePaths = [
@@ -65,15 +66,9 @@ class ProfileScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(width: 5),
-            GestureDetector(
-              onTap: () {
-                // Handle the icon tap
-                print("Profile icon tapped");
-              },
-              child: CircleAvatar(
+             CircleAvatar(
                 backgroundImage: AssetImage('assets/profile.png'),
                 radius: 15,
-              ),
             ),
             const SizedBox(width: 80),
             Column(
@@ -100,16 +95,23 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(width: 25),
             Column(
               children: [
-                const Text(
-                  "Boards",
-                  style: TextStyle(
-                    fontSize: 17,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 5),
-              ],
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+  MaterialPageRoute(builder: (context) => BoardsScreen()),
+);
+            },
+            child: const Text(
+              "Boards",
+              style: TextStyle(
+                fontSize: 17,
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+          const SizedBox(height: 5),
+        ],
             ),
           ],
         ),
