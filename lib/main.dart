@@ -4,7 +4,7 @@ import 'pages/nav.dart';
 import 'pages/home.dart';
 import 'pages/search.dart';
 import 'pages/profile.dart';
-import 'pages/chat.dart';
+import 'pages/messages/inbox/chat.dart';
 import 'pages/add/add_college.dart';
 import 'pages/add/add_board.dart';
 import 'pages/add/text.dart';
@@ -149,7 +149,7 @@ class _MainScreenState extends State<MainScreen> {
                         const Text(
                           "All",
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 15,
                             color: Colors.white,
                           ),
                         ),
@@ -164,13 +164,13 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(width: 20),
+                    const SizedBox(width: 15),
                     Column(
                       children: [
                         const Text(
-                          "Board",
+                          "Aesthetic",
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 15,
                             color: Colors.white,
                           ),
                         ),
