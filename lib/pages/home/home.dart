@@ -72,22 +72,7 @@ class HomePage extends StatelessWidget {
                           Icons.more_horiz, // Horizontal "..." icon
                           color: Colors.white,
                         ),
-                        onSelected: (value) {
-                          switch (value) {
-                            case 'save':
-                              // Handle save action
-                              break;
-                            case 'download':
-                              // Handle download action
-                              break;
-                            case 'share':
-                              // Handle share action
-                              break;
-                            case 'pin':
-                              // Handle pin action
-                              break;
-                          }
-                        },
+                        
                         itemBuilder: (context) => [
                           const PopupMenuItem(
                             value: 'save',
