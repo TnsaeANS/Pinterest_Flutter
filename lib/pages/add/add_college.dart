@@ -7,7 +7,6 @@ enum PenType { pencil, brush, pen }
 class AddCollegeScreen extends StatefulWidget {
   final List<String> imagePaths = [
     'assets/1.jpg', 'assets/2.jpg', 'assets/3.jpg', 'assets/4.jpg',
-    // Add more asset paths as needed
   ];
 
   AddCollegeScreen({super.key});
@@ -40,9 +39,7 @@ class _AddCollegeScreenState extends State<AddCollegeScreen> {
                   Positioned.fill(
                     child: CustomPaint(
                       painter: DottedBackgroundPainter(
-                        excludeRects: [
-                          
-                        ],
+                        excludeRects: [],
                       ),
                     ),
                   ),
