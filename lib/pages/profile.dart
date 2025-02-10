@@ -104,7 +104,7 @@ class ProfileScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => BoardsScreen()),
+                      MaterialPageRoute(builder: (context) => BoardsScreen(onItemTapped: (p0) => 0)),
                     );
                   },
                   child: const Text(
