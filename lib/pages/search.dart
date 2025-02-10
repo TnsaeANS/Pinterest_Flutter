@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:pinterest_flutter/constants/colors.dart';
+import 'package:pinterest_flutter/pages/nav.dart';
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
 
