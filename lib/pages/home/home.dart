@@ -3,6 +3,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:pinterest_flutter/constants/colors.dart';
 
 
+
 class HomePage extends StatelessWidget {
   final List<String> imagePaths = [
     'assets/1.jpg',
@@ -49,6 +50,7 @@ class HomePage extends StatelessWidget {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                
                 // Image card
                 Card(
                   clipBehavior: Clip.antiAlias,
