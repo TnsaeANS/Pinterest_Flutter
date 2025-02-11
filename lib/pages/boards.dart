@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pinterest_flutter/constants/colors.dart';
 import 'profilePage.dart';
+import 'nav.dart';
+
 
 class BoardsScreen extends StatelessWidget {
   final List<String> imagePaths = [
@@ -53,11 +55,16 @@ class BoardsScreen extends StatelessWidget {
 
   ];
 
-  BoardsScreen({super.key});
+final Function(int) onItemTapped;
+  BoardsScreen({super.key, required this.onItemTapped});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: NavBar(
+        selectedIndex: 1,
+        onItemTapped: onItemTapped,
+      ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
@@ -1031,7 +1038,7 @@ SizedBox(height: 20),
 
 void main() {
   runApp(MaterialApp(
-    home: BoardsScreen(),
+    home: BoardsScreen(onItemTapped: onItemTapped,),
   ));
 }
 }
