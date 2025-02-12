@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pinterest_flutter/constants/colors.dart';
 import 'profilePage.dart';
-import 'nav.dart';
+import '../nav.dart';
 
 
 class BoardsScreen extends StatelessWidget {
