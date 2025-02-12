@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pinterest_flutter/main.dart';
 import 'package:pinterest_flutter/pages/login&signup/signup.dart';
 import 'package:pinterest_flutter/pages/home/home.dart';
 
@@ -70,9 +71,7 @@ class PinterestLandingPage extends StatelessWidget {
             _buildLoginButton('Log in', Colors.red, onPressed: () {
               Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                   HomePage()), // Navigate to Home page
+                          MaterialPageRoute(builder: (context) => const MainScreen()), 
                         );
               Navigator.pop(context);// Close popup after login
             }),
