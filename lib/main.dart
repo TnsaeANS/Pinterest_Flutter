@@ -7,6 +7,7 @@ import 'pages/profile.dart';
 import 'pages/messages/inbox/chat.dart';
 import 'pages/add/add_college.dart';
 import 'pages/home/home_nav.dart';
+import 'pages/home/aesthetic.dart';
 
 void main() {
   runApp(const MyApp());
@@ -80,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen>
         child: SlideTransition(
           position: _logoAnimation,
           child: Image.asset(
-            'assets/pinterest.png', // Splash image
+            'assets/pinterest.png',
             width: 300,
             height: 300,
           ),
@@ -101,7 +102,7 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    HomePage(),
+    HomeContainer(), // Wrapper for HomePage & AestheticPage
     SearchPage(),
     AddCollegeScreen(),
     NewMessageScreen(),
@@ -116,29 +117,65 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double appBarHeight = 50;
-
-    if (_selectedIndex == 1 ||
-        _selectedIndex == 4 ||
-        _selectedIndex == 3 ||
-        _selectedIndex == 2) {
-      appBarHeight = 0; // Hide the AppBar completely
-    } else if (_selectedIndex == 0) {
-      appBarHeight = 60; // Slightly taller for the search bar
-    }
+    double appBarHeight = (_selectedIndex == 1 ||
+            _selectedIndex == 4 ||
+            _selectedIndex == 3 ||
+            _selectedIndex == 2)
+        ? 0
+        : 60;
 
     return Scaffold(
       backgroundColor: MainColor.primaryColor,
-      body: Stack(
-        children: [
-          _pages[_selectedIndex],
-          if (_selectedIndex == 0) const HomeNavBar(), // Show only on HomePage
-        ],
-      ),
+      body: _pages[_selectedIndex],
       bottomNavigationBar: NavBar(
         selectedIndex: _selectedIndex,
         onItemTapped: _onItemTapped,
       ),
+    );
+  }
+}
+
+/// HomeContainer to properly handle switching between HomePage & AestheticPage
+class HomeContainer extends StatefulWidget {
+  @override
+  _HomeContainerState createState() => _HomeContainerState();
+}
+
+class _HomeContainerState extends State<HomeContainer> {
+  final PageController _pageController = PageController();
+  int _currentIndex = 0;
+
+  void _onPageChanged(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  void _onHomeNavTapped(int index) {
+    _pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        PageView(
+          controller: _pageController,
+          onPageChanged: _onPageChanged,
+          children: [
+            HomePage(),
+            AestheticPage(), // Add AestheticPage here
+          ],
+        ),
+        HomeNavBar(
+          onPageChanged: _onHomeNavTapped, 
+          currentIndex: _currentIndex,
+        ),
+      ],
     );
   }
 }
