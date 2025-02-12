@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:pinterest_flutter/constants/colors.dart';
-import 'package:pinterest_flutter/pages/home/home_nav.dart'; // Import home_nav.dart
-import 'package:pinterest_flutter/pages/nav.dart'; // Import nav.dart
 
 class AestheticPage extends StatefulWidget {
-  AestheticPage({super.key});
+  const AestheticPage({super.key});
 
   @override
   _AestheticPageState createState() => _AestheticPageState();
@@ -52,7 +50,6 @@ class _AestheticPageState extends State<AestheticPage> {
       backgroundColor: MainColor.primaryColor,
       body: Column(
         children: [
-          HomeNavBar(), // Place HomeNav at the top
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -65,15 +62,18 @@ class _AestheticPageState extends State<AestheticPage> {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      // Image card
+                      // Image card with fixed aspect ratio
                       Card(
                         clipBehavior: Clip.antiAlias,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: Image.asset(
-                          imagePaths[index],
-                          fit: BoxFit.cover,
+                        child: AspectRatio(
+                          aspectRatio: 3 / 4,
+                          child: Image.asset(
+                            imagePaths[index],
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                       // Bar under the image
@@ -116,19 +116,8 @@ class _AestheticPageState extends State<AestheticPage> {
               ),
             ),
           ),
-          NavBar(
-            selectedIndex: _selectedIndex, // Pass the selected index
-            onItemTapped: _onItemTapped, // Pass the callback for item tap
-          ), // Place NavBar at the bottom
         ],
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: AestheticPage(),
-  ));
 }
