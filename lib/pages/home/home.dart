@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:pinterest_flutter/constants/colors.dart';
 
-
-
 class HomePage extends StatelessWidget {
   final List<String> imagePaths = [
     'assets/1.jpg',
@@ -30,10 +28,21 @@ class HomePage extends StatelessWidget {
     'assets/19.jpg',
     'assets/20.jpg',
     'assets/21.jpg',
-    
   ];
 
   HomePage({super.key});
+
+  void _showImagePopup(BuildContext context, int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FullScreenImagePage(
+          imagePath: imagePaths[index],
+          index: index,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,31 +59,32 @@ class HomePage extends StatelessWidget {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                
                 // Image card
-                Card(
-                  clipBehavior: Clip.antiAlias,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Image.asset(
-                    imagePaths[index],
-                    fit: BoxFit.cover,
+                GestureDetector(
+                  onTap: () => _showImagePopup(context, index),
+                  child: Card(
+                    clipBehavior: Clip.antiAlias,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Image.asset(
+                      imagePaths[index],
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 // Bar under the image
                 Container(
-                  height: 40, // Height of the bar
-                  color: Colors.black.withOpacity(0.7), // Semi-transparent bar
+                  height: 40,
+                  color: Colors.black.withOpacity(0.7),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end, // Align icon to the right
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       PopupMenuButton<String>(
                         icon: const Icon(
-                          Icons.more_horiz, // Horizontal "..." icon
+                          Icons.more_horiz,
                           color: Colors.white,
                         ),
-                        
                         itemBuilder: (context) => [
                           const PopupMenuItem(
                             value: 'save',
@@ -102,6 +112,75 @@ class HomePage extends StatelessWidget {
           },
         ),
       ),
+    );
+  }
+}
+
+class FullScreenImagePage extends StatelessWidget {
+  final String imagePath;
+  final int index;
+
+  const FullScreenImagePage({
+    super.key,
+    required this.imagePath,
+    required this.index,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: MainColor.primaryColor,
+      body: Stack(
+        children: [
+          Center(
+            child: Image.asset(
+              imagePath,
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: double.infinity,
+            ),
+          ),
+          // Back button
+          Positioned(
+            top: 40,
+            left: 20,
+            child: CircleAvatar(
+              backgroundColor: Colors.white,
+              radius: 25,
+              child: IconButton(
+                icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ),
+                ),
+                
+          
+          // Circular icons
+          Positioned(
+            bottom: 80,
+            right: 20,
+            child: Column(
+              children: [
+                CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 25,
+                  child: Icon(Icons.search_outlined, color: Colors.black),
+                ),
+                const SizedBox(height: 10),
+                CircleAvatar(
+                  backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+                  radius: 25,
+                  child: Icon(Icons.cut, color: Colors.black),
+                ),
+              ],
+            ),
+          ),
+          Row(
+
+          ),
+        ],
+      ),
+
     );
   }
 }
