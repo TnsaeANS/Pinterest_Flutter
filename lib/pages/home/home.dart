@@ -129,58 +129,76 @@ class FullScreenImagePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MainColor.primaryColor,
-      body: Stack(
-        children: [
-          Center(
-            child: Image.asset(
-              imagePath,
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: double.infinity,
-            ),
-          ),
-          // Back button
-          Positioned(
-            top: 40,
-            left: 20,
-            child: CircleAvatar(
-              backgroundColor: Colors.white,
-              radius: 25,
-              child: IconButton(
-                icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-                onPressed: () => Navigator.pop(context),
-              ),
-            ),
-                ),
-                
-          
-          // Circular icons
-          Positioned(
-            bottom: 80,
-            right: 20,
-            child: Column(
+      backgroundColor: Colors.black,
+      body:SingleChildScrollView(
+         child: Padding(
+        padding: const EdgeInsets.fromLTRB(5.0, 10.0, 5.0, 5.0),
+        child: Column(
+          children: [
+            Stack(
               children: [
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 25,
-                  child: Icon(Icons.search_outlined, color: Colors.black),
+                Center(
+  child: ClipRRect(
+    borderRadius: BorderRadius.circular(20.0), // Adjust the radius as needed
+    child: Image.asset(
+      imagePath,
+      fit: BoxFit.cover,
+      width: double.infinity,
+    ),
+  ),
+),
+                Positioned(
+                  top: 10,
+                  left: 20,
+                  child: CircleAvatar(
+                    backgroundColor: const Color.fromARGB(131, 0, 0, 0),
+                    radius: 20,
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back_ios, color: const Color.fromARGB(255, 255, 255, 255), size: 25),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                  ),
                 ),
-                const SizedBox(height: 10),
-                CircleAvatar(
-                  backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-                  radius: 25,
-                  child: Icon(Icons.cut, color: Colors.black),
+                // Circular icons (optional)
+                Positioned(
+                  bottom: 20,
+                  right: 10,
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: const Color.fromARGB(131, 0, 0, 0),
+                        radius: 25,
+                        child: Icon(Icons.search_outlined, color: Colors.white),
+                      ),
+                      const SizedBox(height: 10),
+                      CircleAvatar(
+                        backgroundColor: const Color.fromARGB(131, 0, 0, 0),
+                        radius: 25,
+                        child: Icon(Icons.cut, color: Colors.white),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
-          ),
-          Row(
-
-          ),
-        ],
-      ),
-
+            const SizedBox(height: 20), // Space between image and icons
+            // Row of icons underneath the image
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                
+                  Icon(Icons.favorite, color: Colors.black),
+                
+                Icon(Icons.share, color: Colors.black),
+                
+                Icon(Icons.download, color: Colors.black),
+          
+             ],
+            ),
+         Text('heelp', style: TextStyle( fontSize: 30)), 
+          ],
+        ),
+      ),)
     );
   }
 }
