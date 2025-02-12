@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:pinterest_flutter/constants/colors.dart';
+import 'dart:math';
 
 class HomePage extends StatelessWidget {
   final List<String> imagePaths = [
@@ -39,6 +40,7 @@ class HomePage extends StatelessWidget {
         builder: (context) => FullScreenImagePage(
           imagePath: imagePaths[index],
           index: index,
+          imagePaths: imagePaths,
         ),
       ),
     );
@@ -119,69 +121,222 @@ class HomePage extends StatelessWidget {
 class FullScreenImagePage extends StatelessWidget {
   final String imagePath;
   final int index;
+  final List<String> imagePaths;
 
   const FullScreenImagePage({
     super.key,
     required this.imagePath,
     required this.index,
+    required this.imagePaths,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MainColor.primaryColor,
-      body: Stack(
-        children: [
-          Center(
-            child: Image.asset(
-              imagePath,
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: double.infinity,
-            ),
-          ),
-          // Back button
-          Positioned(
-            top: 40,
-            left: 20,
-            child: CircleAvatar(
-              backgroundColor: Colors.white,
-              radius: 25,
-              child: IconButton(
-                icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-                onPressed: () => Navigator.pop(context),
-              ),
-            ),
-                ),
-                
-          
-          // Circular icons
-          Positioned(
-            bottom: 80,
-            right: 20,
+        backgroundColor: Colors.black,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(5.0, 10.0, 5.0, 5.0),
             child: Column(
               children: [
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 25,
-                  child: Icon(Icons.search_outlined, color: Colors.black),
+                Stack(
+                  children: [
+                    Center(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(
+                            20.0), 
+                        child: Image.asset(
+                          imagePath,
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 10,
+                      left: 20,
+                      child: CircleAvatar(
+                        backgroundColor: const Color.fromARGB(131, 0, 0, 0),
+                        radius: 20,
+                        child: IconButton(
+                          icon: Icon(Icons.arrow_back_ios,
+                              color: const Color.fromARGB(255, 255, 255, 255),
+                              size: 25),
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                      ),
+                    ),
+                    // Circular icons (optional)
+                    Positioned(
+                      bottom: 20,
+                      right: 10,
+                      child: Column(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: const Color.fromARGB(131, 0, 0, 0),
+                            radius: 25,
+                            child: Icon(Icons.search_outlined,
+                                color: Colors.white),
+                          ),
+                          const SizedBox(height: 10),
+                          CircleAvatar(
+                            backgroundColor: const Color.fromARGB(131, 0, 0, 0),
+                            radius: 25,
+                            child: Icon(Icons.cut, color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 10),
-                CircleAvatar(
-                  backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-                  radius: 25,
-                  child: Icon(Icons.cut, color: Colors.black),
+                const SizedBox(height: 20), // Space between image and icons
+                // Row of icons underneath the image
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(width: 15),
+                    Icon(Icons.favorite_outline, color: Colors.white),
+                    SizedBox(width: 5),
+                    Text('109',
+                        style: TextStyle(fontSize: 10, color: Colors.white)),
+                    SizedBox(width: 20),
+                    Icon(Icons.chat_bubble_outline_rounded,
+                        color: Colors.white),
+                    SizedBox(width: 5),
+                    Text('9',
+                        style: TextStyle(fontSize: 10, color: Colors.white)),
+                    SizedBox(width: 20),
+                    Icon(Icons.share, color: Colors.white),
+                    SizedBox(width: 20),
+                    Icon(Icons.more_horiz, color: Colors.white),
+                    Spacer(),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xFFAD0922),
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                      ),
+                      clipBehavior: Clip.antiAlias,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      child: Text(
+                        'Save',
+                        style: TextStyle(fontSize: 15, color: Colors.white),
+                      ),
+                    ),
+                  ],
                 ),
+                SizedBox(height: 20),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(width: 15),
+                    CircleAvatar(
+                      backgroundImage: AssetImage('assets/38.jpg'),
+                      radius: 10,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      'Boink',
+                      style: TextStyle(fontSize: 15, color: Colors.white),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 25),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(width: 15),
+                    Text(
+                      'What do you think?',
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 25),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(width: 15),
+                    CircleAvatar(
+                      backgroundImage: AssetImage('assets/profile.png'),
+                      radius: 23,
+                    ),
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          hintText: 'Add a Comment',
+                          hintStyle: TextStyle(
+                              fontSize: 15,
+                              color: const Color.fromARGB(94, 228, 228, 228)),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(40),
+                          ),
+                          filled: true,
+                          fillColor: const Color.fromARGB(28, 218, 218, 218),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: 50),
+                Container(
+                  height: 1, // Thin line
+                  color: const Color.fromARGB(8, 93, 93, 93), // Line color
+                ),
+                SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(width: 15),
+                    Text(
+                      'More to explore',
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                  ],
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: MasonryGridView.builder(
+                  gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                  ),
+                  itemCount: 8,
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, randomIndex) {
+                    final random = Random();
+
+                    final shuffledImages = List.from(imagePaths)
+                    ..shuffle(random);
+
+                    return Card(
+                    clipBehavior: Clip.antiAlias,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Image.asset(
+                      shuffledImages[randomIndex % shuffledImages.length],
+                      fit: BoxFit.contain,
+                    ),
+                    );
+                  },
+                  ),
+                ),
+                
+                
+
+                SizedBox(height: 25),
               ],
             ),
           ),
-          Row(
-
-          ),
-        ],
-      ),
-
-    );
+        ));
   }
 }
 
