@@ -51,7 +51,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: MainColor.primaryColor,
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.fromLTRB(5.0, 50.0, 5.0, 5.0),
         child: MasonryGridView.builder(
           gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -287,7 +287,7 @@ class FullScreenImagePage extends StatelessWidget {
                 SizedBox(height: 50),
                 Container(
                   height: 1, // Thin line
-                  color: const Color.fromARGB(8, 93, 93, 93), // Line color
+                  color: const Color.fromARGB(41, 141, 141, 141), // Line color
                 ),
                 SizedBox(height: 15),
                 Row(
@@ -301,35 +301,77 @@ class FullScreenImagePage extends StatelessWidget {
                   ],
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: MasonryGridView.builder(
-                  gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                  ),
-                  itemCount: 8,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, randomIndex) {
-                    final random = Random();
-
-                    final shuffledImages = List.from(imagePaths)
-                    ..shuffle(random);
-
-                    return Card(
-                    clipBehavior: Clip.antiAlias,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                Column(
+                  children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: MasonryGridView.builder(
+                    gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
                     ),
-                    child: Image.asset(
-                      shuffledImages[randomIndex % shuffledImages.length],
-                      fit: BoxFit.contain,
+                    itemCount: 8,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, randomIndex) {
+                      final random = Random();
+
+                      final shuffledImages = List.from(imagePaths)
+                      ..shuffle(random);
+
+                      return Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Card(
+                        clipBehavior: Clip.antiAlias,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Image.asset(
+                          shuffledImages[randomIndex % shuffledImages.length],
+                          fit: BoxFit.contain,
+                        ),
+                        ),
+                        // Bar under the image
+                        Container(
+                        height: 40, // Height of the bar
+                        color: Colors.black.withOpacity(0.7), // Semi-transparent bar
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end, // Align icon to the right
+                          children: [
+                          PopupMenuButton<String>(
+                            icon: const Icon(
+                            Icons.more_horiz, // Horizontal "..." icon
+                            color: Colors.white,
+                            ),
+                            itemBuilder: (context) => [
+                            const PopupMenuItem(
+                              value: 'save',
+                              child: Text('Save'),
+                            ),
+                            const PopupMenuItem(
+                              value: 'download',
+                              child: Text('Download'),
+                            ),
+                            const PopupMenuItem(
+                              value: 'share',
+                              child: Text('Share'),
+                            ),
+                            const PopupMenuItem(
+                              value: 'pin',
+                              child: Text('Pin'),
+                            ),
+                            ],
+                          ),
+                          ],
+                        ),
+                        ),
+                      ],
+                      );
+                    },
                     ),
-                    );
-                  },
                   ),
+                  ],
                 ),
-                
                 
 
                 SizedBox(height: 25),
