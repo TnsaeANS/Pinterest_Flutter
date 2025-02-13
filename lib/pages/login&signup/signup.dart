@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pinterest_flutter/main.dart';
 import 'package:pinterest_flutter/pages/home/home.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -134,9 +135,7 @@ class SignUpPage extends StatelessWidget {
       ),
       onPressed: () {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (context) => HomePage(),
-          ),
+          MaterialPageRoute(builder: (context) => const MainScreen()), 
         );
       },
       child: const Text(

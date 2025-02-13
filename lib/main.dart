@@ -8,6 +8,8 @@ import 'pages/messages/inbox/chat.dart';
 import 'pages/add/add_college.dart';
 import 'pages/home/home_nav.dart';
 import 'pages/home/aesthetic.dart';
+import 'pages/login&signup/landing_page.dart';
+import 'pages/login&signup/signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -59,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen>
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const MainScreen()),
+          MaterialPageRoute(builder: (context) => const PinterestLandingPage()),
         );
       }
     });
@@ -107,6 +109,8 @@ class _MainScreenState extends State<MainScreen> {
     AddCollegeScreen(),
     NewMessageScreen(),
     ProfileScreen(),
+    PinterestLandingPage(),
+    SignUpPage(),
   ];
 
   void _onItemTapped(int index) {
