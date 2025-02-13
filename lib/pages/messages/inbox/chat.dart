@@ -123,7 +123,7 @@ class _ChatPageState extends State<ChatScreen> with SingleTickerProviderStateMix
           child: Text(
             'Contacts',
             style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
+),
         ),
         ListTile(
           leading: const CircleAvatar(backgroundColor: Colors.grey),
@@ -158,10 +158,118 @@ class _ChatPageState extends State<ChatScreen> with SingleTickerProviderStateMix
             style: TextStyle(color: Colors.grey),
           ),
           onTap: () {
-            // Invite friends action
+            _showInviteFriendsSheet(context);
           },
         ),
       ],
+    );
+  }
+
+  void _showInviteFriendsSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.black,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        return DraggableScrollableSheet(
+          expand: false,
+          initialChildSize: 0.5,
+          minChildSize: 0.3,
+          maxChildSize: 0.9,
+          builder: (_, scrollController) {
+            return Column(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: IconButton(
+                    icon: const Icon(Icons.close, color: Colors.white),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ),
+                const Text("Share", style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 10),
+
+                // Share Options Row
+                SizedBox(
+                  height: 80,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    children: [
+                      _buildShareOption("Copy link", Icons.link),
+                      _buildShareOption("WhatsApp", Icons.phone, color: Colors.green),
+                      _buildShareOption("Messages", Icons.message, color: Colors.greenAccent),
+                      _buildShareOption("Mail", Icons.mail, color: Colors.grey),
+                      _buildShareOption("X", Icons.cancel), // Replace with actual X logo
+                      _buildShareOption("Instagram", Icons.camera_alt, color: Colors.purple),
+                      _buildShareOption("Telegram", Icons.telegram, color: Colors.blue),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 10),
+                const Divider(color: Colors.grey),
+
+                // Search Bar
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: TextField(
+                    style: const TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                      hintText: "Search contacts",
+                      hintStyle: const TextStyle(color: Colors.white70),
+                      filled: true,
+                      fillColor: Colors.grey[900],
+                      prefixIcon: const Icon(Icons.search, color: Colors.white),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                  ),
+                ),
+const SizedBox(height: 10),
+
+                // Contacts List
+                Expanded(
+                  child: ListView.builder(
+                    controller: scrollController,
+                    itemCount: 1, // Change this dynamically for real data
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        leading: const CircleAvatar(backgroundColor: Colors.grey),
+                        title: const Text("beza", style: TextStyle(color: Colors.white)),
+                        subtitle: const Text("@beazanesh", style: TextStyle(color: Colors.white70)),
+                        trailing: ElevatedButton(
+                          style: ElevatedButton.styleFrom(backgroundColor: Colors.grey[800]),
+                          onPressed: () {},
+                          child: const Text("Send", style: TextStyle(color: Colors.white)),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Widget _buildShareOption(String label, IconData icon, {Color color = Colors.white}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Column(
+        children: [
+          CircleAvatar(backgroundColor: Colors.grey[850], radius: 25, child: Icon(icon, color: color, size: 28)),
+          const SizedBox(height: 5),
+          Text(label, style: const TextStyle(color: Colors.white70, fontSize: 12)),
+        ],
+      ),
     );
   }
 }
