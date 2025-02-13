@@ -107,7 +107,7 @@ class _MainScreenState extends State<MainScreen> {
     HomeContainer(), // Wrapper for HomePage & AestheticPage
     SearchPage(),
     AddCollegeScreen(),
-    NewMessageScreen(),
+    ChatScreen(),
     ProfileScreen(),
     PinterestLandingPage(),
     SignUpPage(),
