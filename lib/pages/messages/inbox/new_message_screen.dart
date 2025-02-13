@@ -1,137 +1,127 @@
 import 'package:flutter/material.dart';
 import 'chat_detail_screen.dart';
-class ChatDetailScreen extends StatefulWidget {
-  final String contactName;
 
-  const ChatDetailScreen({super.key, required this.contactName});
+class NewMessageScreen extends StatefulWidget {
+  const NewMessageScreen({super.key});
 
   @override
-  _ChatDetailScreenState createState() => _ChatDetailScreenState();
+  _NewMessageScreenState createState() => _NewMessageScreenState();
 }
 
-class _ChatDetailScreenState extends State<ChatDetailScreen> {
-  final TextEditingController _controller = TextEditingController();
+class _NewMessageScreenState extends State<NewMessageScreen> {
+  final TextEditingController _searchController = TextEditingController();
+  List<String> contacts = ['Beza', 'Alice', 'Bob']; // Dummy contacts
+  List<String> filteredContacts = [];
+  String? selectedContact;
+
+  @override
+  void initState() {
+    super.initState();
+    filteredContacts = contacts;
+  }
+
+  void _filterContacts(String query) {
+    setState(() {
+      filteredContacts = contacts
+          .where((contact) => contact.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text(widget.contactName),
+        title: const Text('New message'),
         backgroundColor: Colors.black,
         actions: [
-          IconButton(
-            icon: const Icon(Icons.more_vert, color: Colors.white),
-            onPressed: () {},
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: GestureDetector(
+              onTap: selectedContact != null
+                  ? () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              ChatDetailScreen(contactName: selectedContact!),
+                        ),
+                      );
+                    }
+                  : null,
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 18, vertical: 9),
+                decoration: BoxDecoration(
+                  color: selectedContact != null ? Colors.red : Colors.grey,
+                  borderRadius: BorderRadius.circular(19), // Rounded corners
+                ),
+                child: const Text(
+                  'Next',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),
       body: Column(
         children: [
-          const SizedBox(height: 20),
-          Center(
-            child: Column(
-              children: [
-                const CircleAvatar(
-                  radius: 40,
-                  backgroundColor: Colors.grey,
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  widget.contactName,
-                  style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                const Text(
-                  "This could be the beginning of something good",
-                  style: TextStyle(color: Colors.grey),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 20),
-
-          // Quick Reply Buttons
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _quickReplyButton("Hello!"),
-                _quickReplyButton("👋"),
-                _quickReplyButton("Hey!"),
-                _quickReplyButton("😊"),
-                _quickReplyButton("How are you?"),
-              ],
-            ),
-          ),
-
-          const Spacer(),
-
-          // Message Input Section
           Padding(
             padding: const EdgeInsets.all(10),
-            child: Row(
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.add, color: Colors.white),
-                  onPressed: () {},
+            child: TextField(
+              controller: _searchController,
+              style: const TextStyle(color: Colors.white),
+              onChanged: _filterContacts,
+              decoration: InputDecoration(
+                hintText: 'Search by name or email',
+                hintStyle: const TextStyle(color: Colors.grey),
+                prefixIcon: const Icon(Icons.search, color: Colors.white),
+                filled: true,
+                fillColor: Colors.grey[900],
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide.none,
                 ),
-                Expanded(
-                  child: TextField(
-                    controller: _controller,
-                    style: const TextStyle(color: Colors.white),
-                    onChanged: (text) {
-                      setState(() {}); // Rebuild to update the icon
-                    },
-                    decoration: InputDecoration(
-                      hintText: "Type a message...",
-                      hintStyle: const TextStyle(color: Colors.grey),
-                      filled: true,
-                      fillColor: Colors.grey[900],
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: filteredContacts.length,
+              itemBuilder: (context, index) {
+                final contact = filteredContacts[index];
+                return ListTile(
+                  leading: const CircleAvatar(
+                    backgroundColor: Colors.grey,
+                    child: Icon(Icons.person, color: Colors.white),
                   ),
-                ),
-                IconButton(
-                  icon: _controller.text.isEmpty
-                      ? const Icon(Icons.favorite, color: Colors.red) // Heart icon when the input is empty
-                      : const Icon(Icons.send, color: Colors.blue), // Send icon when there's text
-                  onPressed: _controller.text.isEmpty
-                      ? () {}
-                      : () {
-                          // Handle message sending action
-                          print("Message Sent: ${_controller.text}");
-                          _controller.clear(); // Clear text after sending
-                        },
-                ),
-              ],
+                  title: Text(
+                    contact,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  subtitle: Text(
+                    "$contact@gmail.com",
+                    style: const TextStyle(color: Colors.grey),
+                  ),
+                  trailing: selectedContact == contact
+                      ? const Icon(Icons.check, color: Colors.red)
+                      : null,
+                  onTap: () {
+                    setState(() {
+                      selectedContact = contact; // Set the selected contact
+                      });
+                  },
+                );
+              },
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  // Quick reply button widget
-  Widget _quickReplyButton(String text) {
-    return GestureDetector(
-      onTap: () {
-        // You can define what should happen when the quick reply button is tapped
-        print('Quick reply: $text');
-      },
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 14),
-        decoration: BoxDecoration(
-          color: Colors.grey[800],
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Text(
-          text,
-          style: const TextStyle(color: Colors.white),
-        ),
       ),
     );
   }
