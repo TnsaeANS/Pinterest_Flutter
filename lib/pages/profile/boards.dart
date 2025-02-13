@@ -88,7 +88,7 @@ final Function(int) onItemTapped;
               children: [
 GestureDetector(
   onTap: () {
-      Navigator.of(context).popUntil((route) => route.isFirst);
+    Navigator.of(context).pop();
   },
   child: const Text(
     "Pins",
@@ -98,7 +98,8 @@ GestureDetector(
       fontWeight: FontWeight.w500,
     ),
   ),
-),
+)
+            ,
                 const SizedBox(height: 4),
                 
               ],

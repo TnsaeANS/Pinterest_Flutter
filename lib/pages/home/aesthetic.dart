@@ -24,20 +24,20 @@ class _AestheticPageState extends State<AestheticPage> {
     'assets/32.jpg',
     'assets/33.jpg',
     'assets/38.jpg',
-    'assets/34.jpg',
-    'assets/35.jpg',
+    'assets/34.jpeg',
+    'assets/35.jpeg',
     'assets/39.jpg',
-    'assets/36.jpg',
+    'assets/36.jpeg',
     'assets/37.jpg',
     'assets/38.jpg',
     'assets/40.jpg',
     'assets/41.jpg',
-    'assets/42.jpg',
+    'assets/42.png',
     'assets/43.jpg',
-    'assets/44.jpg',
-    'assets/45.jpg',
+    'assets/44.png',
+    'assets/45.png',
     'assets/46.jpg',
-    'assets/47.jpg',
+    'assets/47.png',
     'assets/48.jpg',
     'assets/49.jpg',
     'assets/50.jpg',
@@ -52,7 +52,7 @@ class _AestheticPageState extends State<AestheticPage> {
         children: [
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.fromLTRB(5.0, 50.0, 5.0, 5.0),
               child: MasonryGridView.builder(
                 gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
