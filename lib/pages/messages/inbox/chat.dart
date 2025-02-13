@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'chat_detail_screen.dart';
 import 'new_message_screen.dart';
 
+
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
 
@@ -55,35 +56,66 @@ class _ChatPageState extends State<ChatScreen> with SingleTickerProviderStateMix
   }
 
   Widget _buildUpdatesTab() {
-    return ListView(
-      padding: const EdgeInsets.all(10),
-      children: const [
-        Text('New', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
-        ListTile(
-          leading: CircleAvatar(backgroundColor: Colors.grey),
-          title: Text('Christian Lifestyle for you', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-          trailing: Text('3h', style: TextStyle(color: Colors.grey)),
+  return ListView(
+    padding: const EdgeInsets.all(10),
+    children: [
+      const Text(
+        'New',
+        style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+      ),
+      ListTile(
+        leading: CircleAvatar(
+          radius: 25,
+           backgroundImage: AssetImage('assets/50.jpg'), // Replace with your image URL
         ),
-        ListTile(
-          leading: CircleAvatar(backgroundColor: Colors.grey),
-          title: Text("You'd vibe with this", style: TextStyle(color: Colors.white)),
-          trailing: Text('11h', style: TextStyle(color: Colors.grey)),
+        title: const Text(
+          'Christian Lifestyle for you',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 10),
-        Text('Seen', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
-        ListTile(
-          leading: CircleAvatar(backgroundColor: Colors.grey),
-          title: Text('Try searching for more ideas', style: TextStyle(color: Colors.white)),
-          trailing: Text('1d', style: TextStyle(color: Colors.grey)),
+        trailing: const Text('3h', style: TextStyle(color: Colors.grey)),
+      ),
+      ListTile(
+        leading: CircleAvatar(
+          radius: 25,
+          backgroundImage: AssetImage('assets/12.jpg'), // Replace with your image URL
         ),
-        ListTile(
-          leading: CircleAvatar(backgroundColor: Colors.grey),
-          title: Text("Women's Fashion for you", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-          trailing: Text('1d', style: TextStyle(color: Colors.grey)),
+        title: const Text(
+          "You'd vibe with this",
+          style: TextStyle(color: Colors.white),
         ),
-      ],
-    );
-  }
+        trailing: const Text('11h', style: TextStyle(color: Colors.grey)),
+      ),
+      const SizedBox(height: 10),
+      const Text(
+        'Seen',
+        style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+      ),
+      ListTile(
+        leading: CircleAvatar(
+          radius: 25,
+           backgroundImage: AssetImage('assets/20.jpg'), // Replace with your image URL
+        ),
+        title: const Text(
+          'Try searching for more ideas',
+          style: TextStyle(color: Colors.white),
+        ),
+        trailing: const Text('1d', style: TextStyle(color: Colors.grey)),
+      ),
+      ListTile(
+        leading: CircleAvatar(
+          radius: 25,
+           backgroundImage: AssetImage('assets/40.jpg'), // Replace with your image URL
+        ),
+        title: const Text(
+          "Women's Fashion for you",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        trailing: const Text('1d', style: TextStyle(color: Colors.grey)),
+      ),
+    ],
+  );
+}
+
 
   Widget _buildMessagesTab() {
     return Column(
@@ -169,6 +201,7 @@ class _ChatPageState extends State<ChatScreen> with SingleTickerProviderStateMix
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.black,
+      
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
